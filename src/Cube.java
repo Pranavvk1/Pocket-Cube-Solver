@@ -13,6 +13,9 @@ public class Cube {
       {"Y", "Y", "Y", "Y"},
     };
 
+    /**
+     * @return returns true if Move.pieces is the same as solvedCube
+     */
     public boolean isSolved() {
       for (int i = 0; i < solvedCube.length; i++) {
         for (int j = 0; j < solvedCube[i].length; j++) {
@@ -22,6 +25,9 @@ public class Cube {
       return true;
     }
 
+    /**
+     * @return finds an unsolved piece in the Move.pieces 2D array
+     */
     public int findUnsolvedPiece(){
       for (int i = 0; i < solvedCube.length; i++) {
         for (int j = 0; j < solvedCube[i].length; j++) {
@@ -42,6 +48,10 @@ public class Cube {
     }
 
  
+    /**
+     * @param setup The moves to setup the corner swap
+     * @return the inverse of the setup
+     */
     public Move[] reverse(Move[] setup) {
       Move[] reversedAlg = new Move[setup.length];
       for (int i = setup.length - 1; i >= 0; i--) {
@@ -59,6 +69,10 @@ public class Cube {
       return reversedAlg;
     }
     
+    /**
+     * @param pos the position of the intended pieces
+     * @return the moves to setup the corner swap
+     */
     public Move[] setup(int pos) { // setup to swap corners 1 and 2
       Move[] setUp0 = {U}, setUp2 = {}, setUp3 = {BPrime, UPrime, B}, setUp4 = {L, F}, setUp5 = {F}, setUp6 = {LPrime, F}, 
       setUp7 = {L2, F}, setUp8 = {FPrime, D, FPrime}, setUp9 = {F2, D, FPrime},setUp10 = {F, D, FPrime}, setUp11 = {D, FPrime},
@@ -114,6 +128,9 @@ public class Cube {
       }
     }
 
+    /**
+     * @param scramble the moves meant to scramble the cube
+     */
     public void scramble(String scramble) {
       int indexOfSpace = scramble.indexOf(" ");
       while (indexOfSpace >= 0) {
@@ -127,6 +144,9 @@ public class Cube {
       move.execute(false);
     }
     
+    /**
+     * @return the solved position of the piece at the position 1
+     */
     public int findDestination() {
       int pos = 0;
       String up = Move.pieces[0][1];
