@@ -1,8 +1,8 @@
 public class Cube {
-  private Move U = new Move("U"), UPrime = new Move("UPrime"), R = new Move("R"),
-    RPrime = new Move("RPrime"), R2 = new Move("R2"), L = new Move("L"), LPrime = new Move("LPrime"), 
-    L2 = new Move("L2"), F = new Move("F"), FPrime = new Move("FPrime"), F2 = new Move("F2"), B = new Move("B"),
-    BPrime = new Move("BPrime"), D = new Move("D"), DPrime = new Move("DPrime"), D2 = new Move("D2"); 
+  private Move U = new Move("U"), UPrime = new Move("U'"), R = new Move("R"),
+    RPrime = new Move("R'"), R2 = new Move("R2"), L = new Move("L"), LPrime = new Move("L'"), 
+    L2 = new Move("L2"), F = new Move("F"), FPrime = new Move("F'"), F2 = new Move("F2"), B = new Move("B"),
+    BPrime = new Move("B'"), D = new Move("D"), DPrime = new Move("D'"), D2 = new Move("D2"); 
   
     private final String[][] solvedCube = {
       {"W", "W", "W", "W"},
