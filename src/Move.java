@@ -23,7 +23,7 @@ public class Move{
             case "U":
                 U();
                 break;
-            case "UPrime":
+            case "U'":
                 UPrime();
                 break;
             case "U2":
@@ -32,7 +32,7 @@ public class Move{
             case "R":
                 R();
                 break;
-            case "RPrime":
+            case "R'":
                 RPrime();
                 break;
             case "R2":
@@ -41,7 +41,7 @@ public class Move{
             case "L":
                 L();
                 break;
-            case "LPrime":
+            case "L'":
                 LPrime();
                 break;
             case "L2":
@@ -50,7 +50,7 @@ public class Move{
             case "F":
                 F();
                 break;
-            case "FPrime":
+            case "F'":
                 FPrime();
                 break;
             case "F2":
@@ -59,7 +59,7 @@ public class Move{
             case "B":
                 B();
                 break;
-            case "BPrime":
+            case "B'":
                 BPrime();
                 break;
             case "B2":
@@ -68,7 +68,7 @@ public class Move{
             case "D":
                 D();
                 break;
-            case "DPrime":
+            case "D'":
                 DPrime();
                 break;
             case "D2":
