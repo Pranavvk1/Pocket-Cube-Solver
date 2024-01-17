@@ -58,7 +58,7 @@ public class Cube {
         String moveID = setup[i].getID();
         String reversedMove;
         if (moveID.length() == 1) {
-          reversedMove = moveID + "Prime";
+          reversedMove = moveID + "'";
         } else if (moveID.length() == 2) {
           reversedMove = moveID;
         } else {
