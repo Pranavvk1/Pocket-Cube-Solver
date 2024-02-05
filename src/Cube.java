@@ -57,12 +57,12 @@ public class Cube {
       for (int i = setup.length - 1; i >= 0; i--) {
         String moveID = setup[i].getID();
         String reversedMove;
-        if (moveID.length() == 1) {
-          reversedMove = moveID + "'";
+        if (moveID.substring(moveID.length() - 1).equals("'")) {
+          reversedMove = moveID.substring(0, 1);
         } else if (moveID.length() == 2) {
           reversedMove = moveID;
         } else {
-          reversedMove = moveID.substring(0, 1);
+          reversedMove = moveID + "'";
         }
         reversedAlg[reversedAlg.length - i - 1] = new Move(reversedMove);
       }
