@@ -73,61 +73,20 @@ public class Cube {
      * @param pos the position of the intended pieces
      * @return the moves to setup the corner swap
      */
-    public Move[] setup(int pos) { // setup to swap corners 1 and 2
-      Move[] setUp0 = {U}, setUp2 = {}, setUp3 = {BPrime, UPrime, B}, setUp4 = {L, F}, setUp5 = {F}, setUp6 = {LPrime, F}, 
-      setUp7 = {L2, F}, setUp8 = {FPrime, D, FPrime}, setUp9 = {F2, D, FPrime},setUp10 = {F, D, FPrime}, setUp11 = {D, FPrime},
-      setUp12 = {F, DPrime, F2}, setUp14 = {D2, RPrime, D, R}, setUp15 = {FPrime}, setUp17 = {L2, U, LPrime, UPrime}, setUp18 = {L, U}, 
-      setUp19 = {DPrime, FPrime}, setUp20 = {F2}, setUp21 = {DPrime, F2}, setUp22 = {D2, F2}, setUp23 = {D, F2}; 
+    public Move[] setup(int pos) {
+      Move[][] setups = {{U}, {}, {}, {BPrime, UPrime, B}, {L, F}, {F}, {LPrime, F}, 
+      {L2, F}, {FPrime, D, FPrime}, {F2, D, FPrime}, {F, D, FPrime}, {D, FPrime},
+      {F, DPrime, F2}, {}, {D2, RPrime, D, R}, {FPrime}, {}, {L2, U, LPrime, UPrime}, {L, U}, 
+      {DPrime, FPrime}, {F2}, {DPrime, F2}, {D2, F2}, {D, F2}};
 
-      switch (pos) {
-        case 0:
-          return setUp0;
-        case 2:
-          return setUp2;
-        case 3:
-          return setUp3;
-        case 4:
-          return setUp4;
-        case 5:
-          return setUp5;
-        case 6:
-          return setUp6;
-        case 7:
-          return setUp7;
-        case 8:
-          return setUp8;
-        case 9:
-          return setUp9;
-        case 10:
-          return setUp10;
-        case 11:
-          return setUp11;
-        case 12:
-          return setUp12;
-        case 14:
-          return setUp14;
-        case 15:
-          return setUp15;
-        case 17:
-          return setUp17;
-        case 18:
-          return setUp18;
-        case 19:
-          return setUp19;
-        case 20:
-          return setUp20;
-        case 21:
-          return setUp21;
-        case 22:
-          return setUp22;
-        case 23:
-          return setUp23;
-        default:
-          int unsolvedPos = findUnsolvedPiece();
-          return setup(unsolvedPos); 
+      for (int i = 0; i < setups.length; i++) {
+        if(pos == i && pos != 1 &&  pos != 13 && pos != 16) {
+          return setups[i];
+        }
       }
+      int unsolvedPos = findUnsolvedPiece();
+      return setup(unsolvedPos);
     }
-
     /**
      * @param scramble the moves meant to scramble the cube
      */
