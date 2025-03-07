@@ -8,6 +8,78 @@ class Cube{
     {"Y", "Y", "Y", "Y"},
   };
 
+
+  public void execute(boolean shouldPrint, String id) {
+        switch (id) {
+            case "U":
+                U();
+                break;
+            case "U'":
+                U(); U(); U();
+                break;
+            case "U2":
+                U(); U();
+                break;
+            case "R":
+                R();
+                break;
+            case "R'":
+                R(); R(); R();
+                break;
+            case "R2":
+                R(); R();
+                break;
+            case "L":
+                L();
+                break;
+            case "L'":
+                L(); L(); L();
+                break;
+            case "L2":
+                L(); L();
+                break;
+            case "F":
+                F();
+                break;
+            case "F'":
+                F(); F(); F();
+                break;
+            case "F2":
+                F(); F();
+                break;
+            case "B":
+                B();
+                break;
+            case "B'":
+                B(); B(); B();
+                break;
+            case "B2":
+                B(); B();
+                break;
+            case "D":
+                D();
+                break;
+            case "D'":
+                D(); D(); D();
+                break;
+            case "D2":
+                D(); D();
+                break;
+        }
+        if (shouldPrint) System.out.print(id + " ");
+  }
+  
+  public void execAlg(String algorithm) {
+      int indexOfSpace = algorithm.indexOf(" ");
+      while (indexOfSpace >= 0) {
+        String nextMove = algorithm.substring(0, indexOfSpace);
+        execute(true, nextMove);
+        algorithm = algorithm.substring(indexOfSpace + 1);
+        indexOfSpace = algorithm.indexOf(" ");
+      }
+      execute(true, algorithm);
+  }
+
   public void revolveRight(int face) {
     String temp = pieces[face][3];
     for (int i = 3; i > 0; i--) {
