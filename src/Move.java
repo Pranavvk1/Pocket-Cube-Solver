@@ -112,7 +112,7 @@ class Cube{
 
   public void L() {
     int[] faces = {2, 0, 3, 5, 0, 3, 4, 1, 2, 0, 0, 3};
-    move(1, faces)
+    move(1, faces);
   }
 
   public void U() {

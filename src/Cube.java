@@ -101,6 +101,66 @@ public class Cube {
 	    
 	    return solution;
 	}
+
+	public String threeCycleTopLayerSide(int interchange, int oddPiece) {
+		String solution = "";
+		solution += "R2 ";
+
+		String interchangeMove = (interchange == 1) ? "D " : "D' ";
+		solution += interchangeMove;
+
+		String oddPieceSolution = "";
+		boolean isLeft = (oddPiece % 4 == 0) ? true : false;
+	    int numMoves;
+	    
+	    if(isLeft) {
+	        numMoves = ((interchange == 1) ? 1 : 4) - oddPiece / 4;
+	    } else {
+	        numMoves = ((interchange == 1) ? 2 : 1) - oddPiece / 4;
+	    }
+
+		switch(numMoves) {
+	        case -1:
+	            oddPieceSolution += "U ";
+	            break;
+	        case -3:
+	            oddPieceSolution += "U' ";
+	            break;
+	        case -2: 
+	            oddPieceSolution += "U2 ";
+	            break;
+	        case 1:
+	            oddPieceSolution += "U' ";
+	            break;
+	        case 2: 
+	            oddPieceSolution += "U2 ";
+	            break;
+	        case 3:
+	            oddPieceSolution += "U ";
+	            break;
+	    }
+
+		if(interchange == 1) {
+	        if(isLeft) {
+	            oddPieceSolution += "R' U R ";
+	        } else {
+	            oddPieceSolution += "B U' B'  ";
+	        }
+	    } else {
+	        if(isLeft) {
+	            oddPieceSolution += "F' U F ";
+	        } else {
+	            oddPieceSolution += "R U' R' ";
+	        }
+	    }
+	    solution += oddPieceSolution;
+	    
+	    solution += reverse(interchangeMove);
+	    solution += reverse(oddPieceSolution);
+
+		solution += "R2 ";
+		return solution;
+	}
 	
 	public String reverse(String alg) {
 	    String reversedAlg = "";
