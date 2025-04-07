@@ -161,6 +161,22 @@ public class Cube {
 		solution += "R2 ";
 		return solution;
 	}
+
+	public String threeCycleTopLayer(int interchange, int oddPiece) {
+	    if(interchange == 1) {
+	        if(oddPiece == 0) {
+	            return "R' F R' B2 R F' R' B2 R2 ";
+	        } else {
+	            return "R2 F2 R' B R F2 R' B' R' ";
+	        }
+	    } else {
+	        if(oddPiece == 0) {
+	            return "R2 B2 R F' R' B2 R F R ";
+	        } else {
+	            return "F2 R2 F L F' R2 F L' F ";
+	        }
+	    }
+	}
 	
 	public String reverse(String alg) {
 	    String reversedAlg = "";
