@@ -1,5 +1,5 @@
 class Cube{
-  private String[][] pieces = {
+  private static String[][] pieces = {
     {"W", "W", "W", "W"},
     {"O", "O", "O", "O"},
     {"G", "G", "G", "G"},
