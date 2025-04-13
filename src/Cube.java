@@ -202,4 +202,72 @@ public class Cube {
 	    
 	    return reversedAlg;
 	}
+
+		public int findDestination(boolean isBuffer) {
+      int pos = 0;
+      String up = isBuffer ? Move.pieces[0][1] : Move.pieces[1][2];
+      String right = isBuffer ? Move.pieces[3][1] : Move.pieces[2][1];
+      if (up.equals("W")) {
+        if (right.equals("O")) {
+          pos = 3;
+        } else if (right.equals("G")) {
+          pos = 2;
+        } else if (right.equals("B")){
+          pos = 0;
+        } else {
+          pos = 1;
+        }
+      } else if (up.equals("O")) {
+        if (right.equals("W")) {
+          pos = 4;
+        } else if (right.equals("G")) {
+          pos = 5;
+        } else if (right.equals("Y")){
+          pos = 6;
+        } else {
+          pos = 7;
+        }
+      } else if(up.equals("G")) {
+        if (right.equals("O")) {
+          pos = 8;
+        } else if (right.equals("R")) {
+          pos = 9;
+        } else if (right.equals("Y")){
+          pos = 10;
+        } else {
+          pos = 11;
+        }
+      } else if (up.equals("R")){
+        if (right.equals("W")) {
+          pos = 12;
+        } else if(right.equals("B")) {
+          pos = 13;
+        } else if (right.equals("Y")){
+          pos = 14;
+        } else {
+          pos = 15;
+        }
+      } else if (up.equals("B")) {
+        if (right.equals("W")) {
+          pos = 16;
+        } else if (right.equals("O")) {
+          pos = 17;
+        } else if (right.equals("Y")){
+          pos = 18;
+        } else {
+          pos = 19;
+        }
+      } else if (up.equals("Y")) {
+        if (right.equals("G")) {
+          pos = 20;
+        } else if (right.equals("R")){
+          pos = 21;
+        } else if(right.equals("B")){
+          pos = 22;
+        } else {
+          pos = 23;
+        }
+      }
+      return pos;
+    }
 }
