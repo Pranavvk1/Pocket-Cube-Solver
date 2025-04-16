@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args){
-      Cube cube = new Cube();
+      CubeSolver cube = new CubeSolver();
       System.out.println(cube.threeCycleTopLayerSide(1, 4));
     }
   }
