@@ -28,6 +28,17 @@ public class Cube{
     return true;
   }
 
+  public int findUnsolvedPiece() {
+    for(int i = 0; i < pieces.length; i++) {
+      for(int j = 0; j < pieces[i].length; j++) {
+        if(pieces[i][j] == solvedCube[i][j]) {
+          return 4 * i + j;
+        }
+      }
+    }
+    return -1;
+  }
+
   public void execute(boolean shouldPrint, String id) {
         switch (id) {
             case "U":
