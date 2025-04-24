@@ -31,8 +31,9 @@ public class Cube{
   public int findUnsolvedPiece() {
     for(int i = 0; i < pieces.length; i++) {
       for(int j = 0; j < pieces[i].length; j++) {
-        if(pieces[i][j] == solvedCube[i][j]) {
-          return 4 * i + j;
+        int pos = 4 * i + j;
+        if(pieces[i][j] != solvedCube[i][j] && pos != 1 && pos != 2 && pos != 9 && pos != 12 && pos != 13 && pos != 16) {
+          return pos;
         }
       }
     }
