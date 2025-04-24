@@ -1,8 +1,34 @@
 public class CubeSolver {
 	public void solveCube(Cube cube) {
-		int interchange = 1;
+		boolean interchange = false;
+		boolean hasSwitched = false;
 
 		while(!cube.isSolved()) {
+		    int oddPiece = findDestination(interchange);
+		    boolean isRightTwo = oddPiece == 1 || oddPiece == 2 || oddPiece == 9 || oddPiece == 12 || oddPiece == 13 || oddPiece == 16;
+		    
+		    if(isRightTwo) {
+		        if(!hasSwitched) {
+		            hasSwitched = true;
+		        } else {
+		            oddPiece = findUnsolvedPiece();
+		            if(oddPiece == -1) {
+		                
+		            }
+		        }
+		    }
+		    
+		    if(!hasSwitched) {
+		        if(oddPiece < 3) {
+		            cube.execute(threeCycleTopLayer((interchange) ? 0 : 1, oddPiece));
+		        } else if(oddPiece == 4 || oddPiece == 5 || oddPiece == 8 || oddPiece == 17) {
+		            cube.execute(threeCycleTopLayerSide((interchange) ? 0 : 1, oddPiece));
+		        } else if(oddPiece == 6 || oddPiece == 7 || oddPiece == 10 oddPiece == 11 || oddPiece == 14 || oddPiece == 15 || oddPiece == 18 || oddPiece == 19) {
+		            cube.execute(threeCycleBottomLayerSide((interchange) ? 0 : 1, oddPiece));
+		        } else {
+		            cube.execute(threeCycleBottomLayer((interchange) ? 0 : 1, oddPiece));
+		        }
+		    }
 			
 		}
 	}
