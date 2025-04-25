@@ -1,5 +1,5 @@
 public class CubeSolver {
-	public void solveCube(Cube cube) {
+public void solveCube(Cube cube) {
 		boolean interchange = false;
 		boolean hasSwitched = false;
 
@@ -13,7 +13,17 @@ public class CubeSolver {
 		        } else {
 		            oddPiece = findUnsolvedPiece();
 		            if(oddPiece == -1) {
-		                
+                        if(Cube.pieces[0][2] == "G") {
+                            cube.execute("R2 F' R2 F R2 B' R2 F' R2 F R2 B R' F R' B2 R F' R' B2 R2");
+                        } else if(Cube.pieces[0][2] == "B") {
+                            cube.execute("");
+                        } else if(Cube.pieces[0][2] == "R") {
+                            if(Cube.pieces[2][1] == "B") {
+                                cube.execute("");
+                            } else {
+                                cube.execute("L B R B' R' F R B R' B' F' L' R2 B2 R F R' B2 R F' R");
+                            }
+                        }
 		            }
 		        }
 		    }
