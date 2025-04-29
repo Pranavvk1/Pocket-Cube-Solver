@@ -16,7 +16,7 @@ public void solveCube(Cube cube) {
                         if(Cube.pieces[0][2] == "G") {
                             cube.execute("R2 F' R2 F R2 B' R2 F' R2 F R2 B R' F R' B2 R F' R' B2 R2");
                         } else if(Cube.pieces[0][2] == "B") {
-                            cube.execute("");
+                            cube.execute("U R2 B2 R F R' B2 R F' U' F U F' R F U' F' U");
                         } else if(Cube.pieces[0][2] == "R") {
                             if(Cube.pieces[2][1] == "B") {
                                 cube.execute("");
