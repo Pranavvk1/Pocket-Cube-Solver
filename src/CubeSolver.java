@@ -1,9 +1,9 @@
 public class CubeSolver {
-public void solveCube(Cube cube) {
+	public void solveCube(Cube cube) {
 		boolean interchange = false;
 		boolean hasSwitched = false;
 
-		while(!cube.isSolved()) {
+		while(!cube.isSolved()){
 		    int oddPiece = findDestination(interchange);
 		    boolean isRightTwo = oddPiece == 1 || oddPiece == 2 || oddPiece == 9 || oddPiece == 12 || oddPiece == 13 || oddPiece == 16;
 		    
@@ -11,35 +11,44 @@ public void solveCube(Cube cube) {
 		        if(!hasSwitched) {
 		            hasSwitched = true;
 		        } else {
-		            oddPiece = findUnsolvedPiece();
+		            oddPiece = cube.findUnsolvedPiece();
 		            if(oddPiece == -1) {
                         if(Cube.pieces[0][2] == "G") {
-                            cube.execute("R2 F' R2 F R2 B' R2 F' R2 F R2 B R' F R' B2 R F' R' B2 R2 ");
-                        } else if(Cube.pieces[0][2] == "B") {
-                            cube.execute("U R2 B2 R F R' B2 R F' U' F U F' R F U' F' U ");
+                            cube.execAlg(true, "R2 F' R2 F R2 B' R2 F' R2 F R2 B R' F R' B2 R F' R' B2 R2 ");
+                        } else if(Cube.pieces[0][2] == "W"){
+							cube.execAlg(true, "U R' F R' B2 R F' R' B2 R2 U2 ");
+						} else if(Cube.pieces[0][2] == "B") {
+                            cube.execAlg(true, "U R2 B2 R F R' B2 R F' U' F U F' R F U' F' U ");
                         } else if(Cube.pieces[0][2] == "R") {
                             if(Cube.pieces[2][1] == "B") {
-                                cube.execute("U' R' F R' B2 R F' R' B2 R2 U2 F R U R' U' F' ");
+                                cube.execAlg(true, "U' R' F R' B2 R F' R' B2 R2 U2 F R U R' U' F' ");
                             } else {
-                                cube.execute("L B R B' R' F R B R' B' F' L' R2 B2 R F R' B2 R F' R ");
+                                cube.execAlg(true, "L B R B' R' F R B R' B' F' L' R2 B2 R F R' B2 R F' R ");
                             }
                         }
-		            }
+		            } else {
+						hasSwitched = false;
+					}
 		        }
-		    }
+		    } else {
+				hasSwitched = false;
+			}
 		    
 		    if(!hasSwitched) {
-		        if(oddPiece < 3) {
-		            cube.execute(threeCycleTopLayer((interchange) ? 0 : 1, oddPiece));
+		        if(oddPiece <= 3) {
+		            cube.execAlg(true, threeCycleTopLayer((interchange) ? 0 : 1, oddPiece));
 		        } else if(oddPiece == 4 || oddPiece == 5 || oddPiece == 8 || oddPiece == 17) {
-		            cube.execute(threeCycleTopLayerSide((interchange) ? 0 : 1, oddPiece));
-		        } else if(oddPiece == 6 || oddPiece == 7 || oddPiece == 10 oddPiece == 11 || oddPiece == 14 || oddPiece == 15 || oddPiece == 18 || oddPiece == 19) {
-		            cube.execute(threeCycleBottomLayerSide((interchange) ? 0 : 1, oddPiece));
+		            cube.execAlg(true, threeCycleTopLayerSide((interchange) ? 0 : 1, oddPiece));
+		        } else if(oddPiece == 6 || oddPiece == 7 || oddPiece == 10 || oddPiece == 11 || oddPiece == 14 || oddPiece == 15 || oddPiece == 18 || oddPiece == 19) {
+		            cube.execAlg(true, threeCycleBottomLayerSide((interchange) ? 0 : 1, oddPiece));
 		        } else {
-		            cube.execute(threeCycleBottomLayer((interchange) ? 0 : 1, oddPiece));
+		            cube.execAlg(true, threeCycleBottomLayer((interchange) ? 0 : 1, oddPiece));
 		        }
 		    }
-			
+
+			interchange = !interchange;
+			//cube.printCube();
+			//System.out.println();
 		}
 	}
 
@@ -188,7 +197,7 @@ public void solveCube(Cube cube) {
 	        if(isLeft) {
 	            oddPieceSolution += "R' U R ";
 	        } else {
-	            oddPieceSolution += "B U' B'  ";
+	            oddPieceSolution += "B U' B' ";
 	        }
 	    } else {
 	        if(isLeft) {
@@ -249,7 +258,7 @@ public void solveCube(Cube cube) {
 
 	public int findDestination(boolean isBuffer) {
       int pos = 0;
-      String up = isBuffer ? Cube.pieces[0][1] : Cube.pieces[1][2];
+      String up = isBuffer ? Cube.pieces[0][1] : Cube.pieces[0][2];
       String right = isBuffer ? Cube.pieces[3][1] : Cube.pieces[2][1];
       if (up.equals("W")) {
         if (right.equals("O")) {
@@ -272,7 +281,7 @@ public void solveCube(Cube cube) {
           pos = 7;
         }
       } else if(up.equals("G")) {
-        if (right.equals("O")) {
+        if (right.equals("W")) {
           pos = 8;
         } else if (right.equals("R")) {
           pos = 9;

@@ -100,15 +100,15 @@ public class Cube{
         if (shouldPrint) System.out.print(id + " ");
   }
   
-  public void execAlg(String algorithm) {
+  public void execAlg(boolean shouldPrint, String algorithm) {
       int indexOfSpace = algorithm.indexOf(" ");
       while (indexOfSpace >= 0) {
         String nextMove = algorithm.substring(0, indexOfSpace);
-        execute(true, nextMove);
+        execute(shouldPrint, nextMove);
         algorithm = algorithm.substring(indexOfSpace + 1);
         indexOfSpace = algorithm.indexOf(" ");
       }
-      execute(true, algorithm);
+      execute(shouldPrint, algorithm);
   }
 
   public void revolveRight(int face) {
@@ -142,7 +142,7 @@ public class Cube{
   }
 
   public void L() {
-    int[] faces = {2, 0, 3, 5, 0, 3, 4, 1, 2, 0, 0, 3};
+    int[] faces = {2, 0, 3, 5, 0, 3, 4, 2, 1, 0, 0, 3};
     move(1, faces);
   }
 
@@ -157,7 +157,7 @@ public class Cube{
   }
 
   public void F() {
-    int[] faces = {0, 2, 3, 3, 0, 3, 5, 0, 1, 1, 1, 2};
+    int[] faces = {0, 2, 3, 3, 3, 0, 5, 0, 1, 1, 1, 2};
     move(2, faces);
   }
   
