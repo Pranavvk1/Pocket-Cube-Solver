@@ -1,4 +1,4 @@
-Solves the 2-by-2 Rubik's cube from any given scramble using the old pochmann's method.
+Solves the 2-by-2 Rubik's cube from any given scramble using the orozco method.
 
 It is assumed that the green side faces the front and the white side faces the top.
 
